@@ -1,18 +1,15 @@
 package com.ozi.petalk.model;
 
-import java.sql.Date;
-import java.sql.Timestamp;
-import java.util.HashSet;
-import java.util.Set;
+
+import java.time.LocalDateTime;
 
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -26,17 +23,69 @@ import lombok.Setter;
 
 public class RegistrationAudit {
 	@Id
+	@GeneratedValue(strategy =GenerationType.AUTO)
+
 	private int id;
 	@Nonnull
 	private int user_id;
 	@Nonnull
-	private Timestamp registration_ts;
+	private LocalDateTime registration_ts;
 	@Nonnull
 	private String computer_device_type;
 	
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "role_id", referencedColumnName = "id")
     private Role rolesMarkedInRegistrationAudit;
+	
+	public RegistrationAudit(int id, int user_id, LocalDateTime registration_ts, String computer_device_type,
+			Role rolesMarkedInRegistrationAudit) {
+		super();
+		this.id = id;
+		this.user_id = user_id;
+		this.registration_ts = registration_ts;
+		this.computer_device_type = computer_device_type;
+		this.rolesMarkedInRegistrationAudit = rolesMarkedInRegistrationAudit;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
+	}
+
+	public LocalDateTime getRegistration_ts() {
+		return registration_ts;
+	}
+
+	public void setRegistration_ts(LocalDateTime registration_ts) {
+		this.registration_ts = registration_ts;
+	}
+
+	public String getComputer_device_type() {
+		return computer_device_type;
+	}
+
+	public void setComputer_device_type(String computer_device_type) {
+		this.computer_device_type = computer_device_type;
+	}
+
+	public Role getRolesMarkedInRegistrationAudit() {
+		return rolesMarkedInRegistrationAudit;
+	}
+
+	public void setRolesMarkedInRegistrationAudit(Role rolesMarkedInRegistrationAudit) {
+		this.rolesMarkedInRegistrationAudit = rolesMarkedInRegistrationAudit;
+	}
 	
 	
 }

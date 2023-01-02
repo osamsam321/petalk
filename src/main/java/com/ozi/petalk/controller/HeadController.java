@@ -3,17 +3,21 @@ package com.ozi.petalk.controller;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.ozi.petalk.model.PetalkDeviceColorList;
 import com.ozi.petalk.model.User;
+import com.ozi.petalk.service.PetalkDeviceColorListService;
 import com.ozi.petalk.service.UserService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 
 
@@ -23,12 +27,20 @@ public class HeadController {
 
 		@Autowired
 		UserService userService;
-		
-		@PostMapping("/petalk/saveUser")
+		@Autowired
+		PetalkDeviceColorListService petalkDeviceColorListService;
+		@CrossOrigin(origins = "http://localhost:4200/")
+		@PostMapping(value = "/petalk/saveUser")
 		public ResponseEntity savePetalkUser(@RequestBody User user )
 		{	
 			 log.info("user details:" + user.toString());
 			 return ResponseEntity.of(userService.saveUser(user)); 
+		}
+		@PostMapping(value = "/petalk/saveColor")
+		public ResponseEntity savePetalkUser(@RequestBody PetalkDeviceColorList petalkDeviceColorList )
+		{	
+			 log.info("color details:" + petalkDeviceColorList.toString());
+			 return ResponseEntity.of(petalkDeviceColorListService.save(petalkDeviceColorList)); 
 		}
 		@PostMapping("/petalk/saveUser/{id}")
 		public ResponseEntity test(@PathVariable ("id") int id )
