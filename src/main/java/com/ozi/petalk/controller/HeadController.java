@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ozi.petalk.model.Pet;
 import com.ozi.petalk.model.PetalkDeviceColorList;
 import com.ozi.petalk.model.User;
+import com.ozi.petalk.service.PetService;
 import com.ozi.petalk.service.PetalkDeviceColorListService;
 import com.ozi.petalk.service.UserService;
 
@@ -29,6 +31,8 @@ public class HeadController {
 		UserService userService;
 		@Autowired
 		PetalkDeviceColorListService petalkDeviceColorListService;
+		@Autowired
+		PetService petService;
 		@CrossOrigin(origins = "http://localhost:4200/")
 		@PostMapping(value = "/petalk/saveUser")
 		public ResponseEntity savePetalkUser(@RequestBody User user )
@@ -52,6 +56,17 @@ public class HeadController {
 		public ResponseEntity<Optional<List<User>>> getAllPetalkUser( )
 		{	
 			return ResponseEntity.ok(userService.getAllPetalkUsers());
+		}
+		@PostMapping("/petalk/new/pet")
+		public ResponseEntity<Optional<Pet>> newPetalkPet(@RequestBody Pet pet)
+		{
+			return ResponseEntity.ok(petService.savePet(pet));
+		}
+		@CrossOrigin(origins = "http://localhost:4200/")
+		@GetMapping("/petalk/pet/name/{id}")
+		public ResponseEntity<Optional<Pet>> getPet(@PathVariable("id") int id)
+		{
+			return ResponseEntity.ok(petService.getPet(id));
 		}
 	
 }

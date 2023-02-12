@@ -73,8 +73,14 @@ public class Pet {
 			          CascadeType.MERGE
 			      }, mappedBy="petsOwnedByUsers")
 	  public List<User> users;
-
 		
+
+		public Pet() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
+
+
 
 		public Pet(long id, String pet_name, float pet_weight, String weight_uom_abbr, float pet_height,
 				float pet_width, float pet_length, String lwh_uom_abbr, String species, Set<AnimalBreed> animalBreeds,
