@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -53,20 +55,21 @@ public class Pet {
 			)
 		 Set <AnimalBreed> animalBreeds = new HashSet <AnimalBreed> ();
 		
-		@ManyToMany(fetch = FetchType.LAZY,
-			      cascade = {
-			          CascadeType.PERSIST,
-			          CascadeType.MERGE
-			      })
-				@JoinTable(
-					    name="pet_petalk_device",
-					    joinColumns=@JoinColumn(name="pet_id"),
-					    inverseJoinColumns=@JoinColumn(name="petalk_device")
-					)
-				 Set <PetalkDevice> petWithPetalkDevices = new HashSet <PetalkDevice> ();
+		//having this leads to a circular references between this and petalk devices with user petalkdevice in JSON data
+//		@ManyToMany(fetch = FetchType.LAZY,
+//			      cascade = {
+//			          CascadeType.PERSIST,
+//			          CascadeType.MERGE
+//			      })
+//				@JoinTable(
+//					    name="pet_petalk_device",
+//					    joinColumns=@JoinColumn(name="pet_id"),
+//					    inverseJoinColumns=@JoinColumn(name="petalk_device")
+//					)
+//				 Set <PetalkDevice> petWithPetalkDevices = new HashSet <PetalkDevice> ();
+//		
 		
-		
-		
+		@JsonIgnore
 		@ManyToMany(fetch = FetchType.LAZY,
 			      cascade = {
 			          CascadeType.PERSIST,
@@ -96,7 +99,7 @@ public class Pet {
 			this.lwh_uom_abbr = lwh_uom_abbr;
 			this.species = species;
 			this.animalBreeds = animalBreeds;
-			this.petWithPetalkDevices = petWithPetalkDevices;
+//			this.petWithPetalkDevices = petWithPetalkDevices;
 			this.users = users;
 		}
 
@@ -222,15 +225,15 @@ public class Pet {
 
 
 
-		public Set<PetalkDevice> getPetWithPetalkDevices() {
-			return petWithPetalkDevices;
-		}
-
-
-
-		public void setPetWithPetalkDevices(Set<PetalkDevice> petWithPetalkDevices) {
-			this.petWithPetalkDevices = petWithPetalkDevices;
-		}
+//		public Set<PetalkDevice> getPetWithPetalkDevices() {
+//			return petWithPetalkDevices;
+//		}
+//
+//
+//
+//		public void setPetWithPetalkDevices(Set<PetalkDevice> petWithPetalkDevices) {
+//			this.petWithPetalkDevices = petWithPetalkDevices;
+//		}
 
 
 

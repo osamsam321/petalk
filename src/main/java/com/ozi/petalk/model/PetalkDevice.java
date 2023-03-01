@@ -49,13 +49,14 @@ public class PetalkDevice {
 		      }, mappedBy="petalkDevices")
   public List<User> users;
 	
-	@ManyToMany(fetch = FetchType.LAZY,
-		      cascade = {
-		          CascadeType.PERSIST,
-		          CascadeType.MERGE
-		      }, mappedBy="petWithPetalkDevices")
-	public List<Pet> pets;
-	
+	//having this leads to a circular references between this and petalk devices with user petalkdevice in JSON data
+//	@ManyToMany(fetch = FetchType.LAZY,
+//		      cascade = {
+//		          CascadeType.PERSIST,
+//		          CascadeType.MERGE
+//		      }, mappedBy="petWithPetalkDevices")
+//	public List<Pet> pets;
+//	
 	@ManyToMany(fetch = FetchType.LAZY,
 		      cascade = {
 		          CascadeType.PERSIST,
@@ -81,7 +82,7 @@ public class PetalkDevice {
 		this.upc_value = upc_value;
 		this.upc_barcode_img_path = upc_barcode_img_path;
 		this.users = users;
-		this.pets = pets;
+//		this.pets = pets;
 		this.petalkDeviceTriggers = petalkDeviceTriggers;
 	}
 
@@ -148,14 +149,14 @@ public class PetalkDevice {
 	public void setUsers(List<User> users) {
 		this.users = users;
 	}
-
-	public List<Pet> getPets() {
-		return pets;
-	}
-
-	public void setPets(List<Pet> pets) {
-		this.pets = pets;
-	}
+//
+//	public List<Pet> getPets() {
+//		return pets;
+//	}
+//
+//	public void setPets(List<Pet> pets) {
+//		this.pets = pets;
+//	}
 
 	public Set<PetalkDeviceTrigger> getPetalkDeviceTriggers() {
 		return petalkDeviceTriggers;

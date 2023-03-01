@@ -2,6 +2,9 @@ package com.ozi.petalk.model;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -38,7 +41,7 @@ public class User {
 	@Nonnull
 	private String username;
 	
-
+	@JsonIgnore
 	@ManyToMany(fetch = FetchType.LAZY,
       cascade = {
           CascadeType.PERSIST,
@@ -50,7 +53,7 @@ public class User {
 		    inverseJoinColumns=@JoinColumn(name="role_id")
 		)
 	 Set <Role> roles = new HashSet <Role> ();
-	
+	@JsonIgnore
 	@ManyToMany(fetch = FetchType.LAZY,
 		      cascade = {
 		          CascadeType.PERSIST,
@@ -62,7 +65,7 @@ public class User {
 				    inverseJoinColumns=@JoinColumn(name="location_id")
 				)
 			 Set <Location> userLocations = new HashSet <Location> ();
-	
+	@JsonIgnore
 	@ManyToMany(fetch = FetchType.LAZY,
 		      cascade = {
 		          CascadeType.PERSIST,
@@ -86,7 +89,7 @@ public class User {
 				    inverseJoinColumns=@JoinColumn(name="pet_id")
 				)
 			 Set <Pet> petsOwnedByUsers = new HashSet <Pet> ();
-	
+	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY,
 		      cascade = {
 		          CascadeType.PERSIST,

@@ -46,6 +46,11 @@ public class AnimalBreed {
 	    public List<Pet> pets;
 		
 		
+		public AnimalBreed() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
+
 		public AnimalBreed(int id, String animal_breed, LocalDateTime registration_ts, Role rolesMarkedInRegistrationAudit,
 				String role_type, List<Pet> pets) {
 			super();

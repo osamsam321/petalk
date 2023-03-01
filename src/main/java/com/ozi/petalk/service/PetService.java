@@ -20,5 +20,8 @@ public class PetService {
 	public Optional<Pet> getPet(int id) {
 		return Optional.of((petjd.getById(id)));
 	}
+	public Optional<Pet> getPetById(int id) {
+		return Optional.of((petjd.getPetById(id)));
+	}
 
 }

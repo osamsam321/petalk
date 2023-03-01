@@ -2,6 +2,7 @@ package com.ozi.petalk.controller;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -40,6 +41,15 @@ public class HeadController {
 			 log.info("user details:" + user.toString());
 			 return ResponseEntity.of(userService.saveUser(user)); 
 		}
+		@CrossOrigin(origins = "http://localhost:4200/")
+		@PostMapping(value = "/petalk/savePet/{userid}")
+		public ResponseEntity savePetalkUser(@PathVariable("userid") long userid, @RequestBody Pet pet )
+		{	
+			 log.info("user details:" + pet.toString());
+			 User user = userService.getById(userid).get();
+			 user.getPetsOwnedByUsers().add(pet);
+			 return ResponseEntity.of(userService.saveUser(user)); 
+		}
 		@PostMapping(value = "/petalk/saveColor")
 		public ResponseEntity savePetalkUser(@RequestBody PetalkDeviceColorList petalkDeviceColorList )
 		{	
@@ -64,9 +74,15 @@ public class HeadController {
 		}
 		@CrossOrigin(origins = "http://localhost:4200/")
 		@GetMapping("/petalk/pet/name/{id}")
-		public ResponseEntity<Optional<Pet>> getPet(@PathVariable("id") int id)
+		public ResponseEntity<Optional<Pet>> getPetById(@PathVariable("id") int id)
 		{
-			return ResponseEntity.ok(petService.getPet(id));
+			return ResponseEntity.ok(petService.getPetById(id));
+		}
+		@CrossOrigin(origins = "http://localhost:4200/")
+		@GetMapping("/petalk/user/getInfo/{id}")
+		public ResponseEntity<Set<Pet>> getUserPet(@PathVariable("id") Long id)
+		{
+			return ResponseEntity.ok(userService.getById(id).get().getPetsOwnedByUsers());
 		}
 	
 }

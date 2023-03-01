@@ -23,6 +23,11 @@ public class UserService {
 	{
 		return Optional.of(userJD.findAll());
 	}
+
+	public Optional<User> getById(Long id) {
+		// TODO Auto-generated method stub
+		return Optional.of(userJD.getById(id));
+	}
 	
 	
 	
