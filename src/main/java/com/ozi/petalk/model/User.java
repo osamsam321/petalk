@@ -65,7 +65,7 @@ public class User {
 				    inverseJoinColumns=@JoinColumn(name="location_id")
 				)
 			 Set <Location> userLocations = new HashSet <Location> ();
-	@JsonIgnore
+	
 	@ManyToMany(fetch = FetchType.LAZY,
 		      cascade = {
 		          CascadeType.PERSIST,
@@ -77,7 +77,6 @@ public class User {
 				    inverseJoinColumns=@JoinColumn(name="petalk_device_id")
 				)
 			 Set <PetalkDevice> petalkDevices = new HashSet <PetalkDevice> ();
-	
 	@ManyToMany(fetch = FetchType.LAZY,
 		      cascade = {
 		          CascadeType.PERSIST,
@@ -89,7 +88,7 @@ public class User {
 				    inverseJoinColumns=@JoinColumn(name="pet_id")
 				)
 			 Set <Pet> petsOwnedByUsers = new HashSet <Pet> ();
-	@JsonIgnore
+	
 	@OneToMany(fetch = FetchType.LAZY,
 		      cascade = {
 		          CascadeType.PERSIST,
@@ -108,6 +107,7 @@ public class User {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 
 	public User(long id, String first_name, String last_name, String email, String username, Set<Role> roles,
 			Set<Location> userLocations, Set<PetalkDevice> petalkDevices, Set<Pet> petsOwnedByUsers,
@@ -204,6 +204,15 @@ public class User {
 	public void setPurchaseAudit(Set<PurchaseAudit> purchaseAudit) {
 		this.purchaseAudit = purchaseAudit;
 	}
+
+	public Set<Location> getUserLocations() {
+		return userLocations;
+	}
+
+	public void setUserLocations(Set<Location> userLocations) {
+		this.userLocations = userLocations;
+	}
+	
 	
 	
 	

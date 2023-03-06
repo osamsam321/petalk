@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import io.micrometer.common.lang.NonNull;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -41,7 +43,7 @@ public class PetalkDevice {
 	private String upc_value;
 	@NonNull
 	private String upc_barcode_img_path;
-	
+	@JsonIgnore
 	@ManyToMany(fetch = FetchType.LAZY,
 		      cascade = {
 		          CascadeType.PERSIST,
@@ -56,7 +58,7 @@ public class PetalkDevice {
 //		          CascadeType.MERGE
 //		      }, mappedBy="petWithPetalkDevices")
 //	public List<Pet> pets;
-//	
+	
 	@ManyToMany(fetch = FetchType.LAZY,
 		      cascade = {
 		          CascadeType.PERSIST,
@@ -70,6 +72,11 @@ public class PetalkDevice {
 			 Set <PetalkDeviceTrigger> petalkDeviceTriggers = new HashSet <PetalkDeviceTrigger> ();
 	
 	
+	public PetalkDevice() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public PetalkDevice(int id, String device_name, LocalDateTime purchased_ts, LocalDateTime first_used_ts, String sku_value,
 			String upc_value, String upc_barcode_img_path, List<User> users, List<Pet> pets,
 			Set<PetalkDeviceTrigger> petalkDeviceTriggers) {

@@ -3,6 +3,8 @@ package com.ozi.petalk.model;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -39,17 +41,24 @@ public class Location {
 	private String state;
 	@Nonnull
 	private String country;
-	
+	@JsonIgnore
 	@ManyToMany(fetch = FetchType.LAZY,
 		      cascade = {
 		          CascadeType.PERSIST,
 		          CascadeType.MERGE
 		      }, mappedBy="userLocations")
 	Set<User> users;
-	
+	@JsonIgnore
 	@OneToOne(mappedBy = "petalkTriggerLocation")
 	PetalkDeviceTrigger petalkDeviceTrigger;
 	
+	
+	
+	public Location() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Location(int id, String address, String address2, String home_type, String apartment_room_value,
 			int zip_code, String street, String state, String country, PetalkDeviceTrigger petalkDeviceTrigger) {
 		super();
@@ -144,6 +153,15 @@ public class Location {
 	public void setPetalkDeviceTrigger(PetalkDeviceTrigger petalkDeviceTrigger) {
 		this.petalkDeviceTrigger = petalkDeviceTrigger;
 	}
+
+	public Set<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(Set<User> users) {
+		this.users = users;
+	}
+	
 	
 	
 }

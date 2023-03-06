@@ -35,6 +35,12 @@ public class PurchaseAudit {
     @JoinColumn(name="user_id", nullable=false)
 	private User user;
 	
+	
+	public PurchaseAudit() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public PurchaseAudit(int id, LocalDateTime purchase_ts, float cost, User user) {
 		super();
 		this.id = id;
@@ -74,6 +80,8 @@ public class PurchaseAudit {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
+	
 	
 	
 }

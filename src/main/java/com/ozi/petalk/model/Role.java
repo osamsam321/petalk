@@ -2,6 +2,8 @@ package com.ozi.petalk.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -27,6 +29,7 @@ public class Role {
 	@Id
 	private int id;
 	@Nonnull 
+	@JsonIgnore
 	private String role_type;
 	@ManyToMany(fetch = FetchType.LAZY,
 		      cascade = {

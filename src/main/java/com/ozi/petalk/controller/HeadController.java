@@ -80,9 +80,16 @@ public class HeadController {
 		}
 		@CrossOrigin(origins = "http://localhost:4200/")
 		@GetMapping("/petalk/user/getInfo/{id}")
-		public ResponseEntity<Set<Pet>> getUserPet(@PathVariable("id") Long id)
+		public ResponseEntity<User> getUserinfo(@PathVariable("id") Long id)
 		{
-			return ResponseEntity.ok(userService.getById(id).get().getPetsOwnedByUsers());
+			return ResponseEntity.ok(userService.getById(id).get());
 		}
+//		@CrossOrigin(origins = "http://localhost:4200/")
+//		@GetMapping("/petalk/user/getUserPetInfo/{id}")
+//		public ResponseEntity<Set<Pet>> getUserPetInfo(@PathVariable("id") Long id)
+//		{
+//			return ResponseEntity.ok(userService.getById(id).get().getPetsOwnedByUsers());
+//		}
+//	
 	
 }

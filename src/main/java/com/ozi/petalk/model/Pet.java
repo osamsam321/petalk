@@ -67,7 +67,7 @@ public class Pet {
 //					    inverseJoinColumns=@JoinColumn(name="petalk_device")
 //					)
 //				 Set <PetalkDevice> petWithPetalkDevices = new HashSet <PetalkDevice> ();
-//		
+	
 		
 		@JsonIgnore
 		@ManyToMany(fetch = FetchType.LAZY,
