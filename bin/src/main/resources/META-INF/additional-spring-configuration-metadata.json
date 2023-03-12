@@ -1,0 +1,37 @@
+{"properties": [
+  {
+    "name": "run",
+    "type": "java.lang.String",
+    "description": "A description for 'run'"
+  },
+  {
+    "name": "InsertToPostgresListTables",
+    "type": "java.lang.String",
+    "description": "A description for 'InsertToPostgresListTables'"
+  },
+  {
+    "name": "InsertToPostgresListTables",
+    "type": "java.lang.String",
+    "description": "A description for 'InsertToPostgresListTables'"
+  },
+  {
+    "name": "InsertToPostgresListTables",
+    "type": "java.lang.String",
+    "description": "A description for 'InsertToPostgresListTables'"
+  },
+  {
+    "name": "InsertToPostgresListTables",
+    "type": "java.lang.String",
+    "description": "A description for 'InsertToPostgresListTables'"
+  },
+  {
+    "name": "InsertToPostgresListTables",
+    "type": "java.lang.String",
+    "description": "A description for 'InsertToPostgresListTables'"
+  },
+  {
+    "name": "InsertToPostgresSQLListTables",
+    "type": "java.lang.String",
+    "description": "A description for 'InsertToPostgresSQLListTables'"
+  }
+]}

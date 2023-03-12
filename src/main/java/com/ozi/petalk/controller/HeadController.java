@@ -2,7 +2,6 @@ package com.ozi.petalk.controller;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,10 +15,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ozi.petalk.model.Pet;
+import com.ozi.petalk.model.PetalkDevice;
 import com.ozi.petalk.model.PetalkDeviceColorList;
+import com.ozi.petalk.model.PetalkDeviceTrigger;
 import com.ozi.petalk.model.User;
 import com.ozi.petalk.service.PetService;
 import com.ozi.petalk.service.PetalkDeviceColorListService;
+import com.ozi.petalk.service.PetalkDeviceService;
+import com.ozi.petalk.service.PetalkDeviceTriggerService;
 import com.ozi.petalk.service.UserService;
 
 
@@ -34,6 +37,11 @@ public class HeadController {
 		PetalkDeviceColorListService petalkDeviceColorListService;
 		@Autowired
 		PetService petService;
+		@Autowired
+		PetalkDeviceService petalkDeviceService;
+		@Autowired
+		PetalkDeviceTriggerService petalkDeviceTriggerService;
+		
 		@CrossOrigin(origins = "http://localhost:4200/")
 		@PostMapping(value = "/petalk/saveUser")
 		public ResponseEntity savePetalkUser(@RequestBody User user )
@@ -84,12 +92,21 @@ public class HeadController {
 		{
 			return ResponseEntity.ok(userService.getById(id).get());
 		}
+		@CrossOrigin(origins = "http://localhost:4200/")
+		@PostMapping("/petalk/new/petalkEventTrigger/{petalk_device_id}")
+		public ResponseEntity<PetalkDevice> addNewPetalkEventTrigger(
+				@PathVariable("petalk_device_id") int petalk_device_id, @RequestBody PetalkDeviceTrigger petalkDeviceTrigger)
+		{
+			log.info("petalk trigger info: " + petalkDeviceTrigger.toString());
+			return ResponseEntity.ok(petalkDeviceService.saveNewPetalkDeviceTrigger(petalk_device_id, petalkDeviceTrigger));
+		}
 //		@CrossOrigin(origins = "http://localhost:4200/")
 //		@GetMapping("/petalk/user/getUserPetInfo/{id}")
 //		public ResponseEntity<Set<Pet>> getUserPetInfo(@PathVariable("id") Long id)
 //		{
 //			return ResponseEntity.ok(userService.getById(id).get().getPetsOwnedByUsers());
 //		}
-//	
+//		
+		
 	
 }

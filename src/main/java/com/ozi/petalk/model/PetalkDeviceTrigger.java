@@ -144,6 +144,16 @@ public class PetalkDeviceTrigger {
 	public void setPet_name(String pet_name) {
 		this.pet_name = pet_name;
 	}
+
+
+
+	@Override
+	public String toString() {
+		return "PetalkDeviceTrigger [id=" + id + ", trigger_ts=" + trigger_ts + ", device_name=" + device_name
+				+ ", pet_name=" + pet_name + ", petalkTriggerLocation=" + petalkTriggerLocation + ", triggerType="
+				+ triggerType + ", petalkDevices=" + petalkDevices + ", associatedPet=" + associatedPet + "]";
+	}
+	
 	
 
 
