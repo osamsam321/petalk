@@ -14,11 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ozi.petalk.model.ContactUs;
 import com.ozi.petalk.model.Pet;
 import com.ozi.petalk.model.PetalkDevice;
 import com.ozi.petalk.model.PetalkDeviceColorList;
 import com.ozi.petalk.model.PetalkDeviceTrigger;
 import com.ozi.petalk.model.User;
+import com.ozi.petalk.service.ContactUsService;
 import com.ozi.petalk.service.PetService;
 import com.ozi.petalk.service.PetalkDeviceColorListService;
 import com.ozi.petalk.service.PetalkDeviceService;
@@ -41,6 +43,8 @@ public class HeadController {
 		PetalkDeviceService petalkDeviceService;
 		@Autowired
 		PetalkDeviceTriggerService petalkDeviceTriggerService;
+		@Autowired
+		ContactUsService contactUsService;
 		
 		@CrossOrigin(origins = "http://localhost:4200/")
 		@PostMapping(value = "/petalk/saveUser")
@@ -99,6 +103,12 @@ public class HeadController {
 		{
 			log.info("petalk trigger info: " + petalkDeviceTrigger.toString());
 			return ResponseEntity.ok(petalkDeviceService.saveNewPetalkDeviceTrigger(petalk_device_id, petalkDeviceTrigger));
+		}
+		@CrossOrigin(origins = "http://localhost:4200/")
+		@PostMapping("/petalk/new/contact_us_message")
+		public ResponseEntity<Optional<ContactUs>> newPetalkPet(@RequestBody ContactUs cuInfo)
+		{
+			return ResponseEntity.ok(contactUsService.saveNewContactInfo(cuInfo));
 		}
 //		@CrossOrigin(origins = "http://localhost:4200/")
 //		@GetMapping("/petalk/user/getUserPetInfo/{id}")
