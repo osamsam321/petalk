@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.validation.constraints.Min;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.annotation.Nonnull;
@@ -40,6 +42,9 @@ public class Pet {
 		private float pet_width;
 		private float pet_length;
 		private String lwh_uom_abbr;
+		private String color;
+	    @Min(value = 0 , message = "Value should be greater then 0")
+		private int age;
 		@Nonnull
 		private String species;
 		
@@ -78,6 +83,10 @@ public class Pet {
 	  public List<User> users;
 		
 
+		
+
+
+
 		public Pet() {
 			super();
 			// TODO Auto-generated constructor stub
@@ -86,8 +95,8 @@ public class Pet {
 
 
 		public Pet(long id, String pet_name, float pet_weight, String weight_uom_abbr, float pet_height,
-				float pet_width, float pet_length, String lwh_uom_abbr, String species, Set<AnimalBreed> animalBreeds,
-				Set<PetalkDevice> petWithPetalkDevices, List<User> users) {
+				float pet_width, float pet_length, String lwh_uom_abbr, String color, String species,
+				Set<AnimalBreed> animalBreeds, List<User> users) {
 			super();
 			this.id = id;
 			this.pet_name = pet_name;
@@ -97,9 +106,10 @@ public class Pet {
 			this.pet_width = pet_width;
 			this.pet_length = pet_length;
 			this.lwh_uom_abbr = lwh_uom_abbr;
+			this.color = color;
 			this.species = species;
+			this.age = age;
 			this.animalBreeds = animalBreeds;
-//			this.petWithPetalkDevices = petWithPetalkDevices;
 			this.users = users;
 		}
 
@@ -246,6 +256,33 @@ public class Pet {
 		public void setUsers(List<User> users) {
 			this.users = users;
 		}
+
+
+
+		public String getColor() {
+			return color;
+		}
+
+
+
+		public void setColor(String color) {
+			this.color = color;
+		}
+
+
+
+		public int getAge() {
+			return age;
+		}
+
+
+
+		public void setAge(int age) {
+			this.age = age;
+		}
+		
+		
+		
 		
 		
 		

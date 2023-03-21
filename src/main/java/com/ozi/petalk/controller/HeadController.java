@@ -106,9 +106,16 @@ public class HeadController {
 		}
 		@CrossOrigin(origins = "http://localhost:4200/")
 		@PostMapping("/petalk/new/contact_us_message")
-		public ResponseEntity<Optional<ContactUs>> newPetalkPet(@RequestBody ContactUs cuInfo)
+		public ResponseEntity<Optional<ContactUs>> newContactMessage(@RequestBody ContactUs cuInfo)
 		{
 			return ResponseEntity.ok(contactUsService.saveNewContactInfo(cuInfo));
+		}
+		
+		@CrossOrigin(origins = "http://localhost:4200/")
+		@PostMapping("/petalk/new/petalk_pet")
+		public ResponseEntity<Optional<Pet>> newPet(@RequestBody Pet pet)
+		{
+			return ResponseEntity.ok(petService.savePet(pet));
 		}
 //		@CrossOrigin(origins = "http://localhost:4200/")
 //		@GetMapping("/petalk/user/getUserPetInfo/{id}")
