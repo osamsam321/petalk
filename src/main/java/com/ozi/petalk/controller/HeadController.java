@@ -16,12 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ozi.petalk.model.ContactUs;
 import com.ozi.petalk.model.Pet;
+import com.ozi.petalk.model.PetalkAppTrigger;
 import com.ozi.petalk.model.PetalkDevice;
 import com.ozi.petalk.model.PetalkDeviceColorList;
 import com.ozi.petalk.model.PetalkDeviceTrigger;
 import com.ozi.petalk.model.User;
 import com.ozi.petalk.service.ContactUsService;
 import com.ozi.petalk.service.PetService;
+import com.ozi.petalk.service.PetalkAppService;
 import com.ozi.petalk.service.PetalkDeviceColorListService;
 import com.ozi.petalk.service.PetalkDeviceService;
 import com.ozi.petalk.service.PetalkDeviceTriggerService;
@@ -45,6 +47,8 @@ public class HeadController {
 		PetalkDeviceTriggerService petalkDeviceTriggerService;
 		@Autowired
 		ContactUsService contactUsService;
+		@Autowired
+		PetalkAppService petalkAppService;
 		
 		@CrossOrigin(origins = "http://localhost:4200/")
 		@PostMapping(value = "/petalk/saveUser")
@@ -54,20 +58,22 @@ public class HeadController {
 			 return ResponseEntity.of(userService.saveUser(user)); 
 		}
 		@CrossOrigin(origins = "http://localhost:4200/")
-		@PostMapping(value = "/petalk/savePet/{userid}")
-		public ResponseEntity savePetalkUser(@PathVariable("userid") long userid, @RequestBody Pet pet )
+		@PostMapping(value = "/petalk/savePetalkEvent/{userid}")
+		public ResponseEntity savePetalkDeviceEvent(@PathVariable("userid") long userid, @RequestBody PetalkAppTrigger petalkAppTrigger )
 		{	
-			 log.info("user details:" + pet.toString());
-			 User user = userService.getById(userid).get();
-			 user.getPetsOwnedByUsers().add(pet);
+			 log.info("user details:" + petalkAppTrigger.toString());
+			 User user= userService.getById(userid).get();
+			 user.getPetalkAppTriggers().add(petalkAppTrigger);
 			 return ResponseEntity.of(userService.saveUser(user)); 
 		}
+		
 		@PostMapping(value = "/petalk/saveColor")
 		public ResponseEntity savePetalkUser(@RequestBody PetalkDeviceColorList petalkDeviceColorList )
 		{	
 			 log.info("color details:" + petalkDeviceColorList.toString());
 			 return ResponseEntity.of(petalkDeviceColorListService.save(petalkDeviceColorList)); 
 		}
+		
 		@PostMapping("/petalk/saveUser/{id}")
 		public ResponseEntity test(@PathVariable ("id") int id )
 		{	
@@ -79,23 +85,27 @@ public class HeadController {
 		{	
 			return ResponseEntity.ok(userService.getAllPetalkUsers());
 		}
+		
 		@PostMapping("/petalk/new/pet")
 		public ResponseEntity<Optional<Pet>> newPetalkPet(@RequestBody Pet pet)
 		{
 			return ResponseEntity.ok(petService.savePet(pet));
 		}
+		
 		@CrossOrigin(origins = "http://localhost:4200/")
 		@GetMapping("/petalk/pet/name/{id}")
 		public ResponseEntity<Optional<Pet>> getPetById(@PathVariable("id") int id)
 		{
 			return ResponseEntity.ok(petService.getPetById(id));
 		}
+		
 		@CrossOrigin(origins = "http://localhost:4200/")
 		@GetMapping("/petalk/user/getInfo/{id}")
 		public ResponseEntity<User> getUserinfo(@PathVariable("id") Long id)
 		{
 			return ResponseEntity.ok(userService.getById(id).get());
 		}
+		
 		@CrossOrigin(origins = "http://localhost:4200/")
 		@PostMapping("/petalk/new/petalkEventTrigger/{petalk_device_id}")
 		public ResponseEntity<PetalkDevice> addNewPetalkEventTrigger(
@@ -104,6 +114,7 @@ public class HeadController {
 			log.info("petalk trigger info: " + petalkDeviceTrigger.toString());
 			return ResponseEntity.ok(petalkDeviceService.saveNewPetalkDeviceTrigger(petalk_device_id, petalkDeviceTrigger));
 		}
+		
 		@CrossOrigin(origins = "http://localhost:4200/")
 		@PostMapping("/petalk/new/contact_us_message")
 		public ResponseEntity<Optional<ContactUs>> newContactMessage(@RequestBody ContactUs cuInfo)
@@ -116,6 +127,16 @@ public class HeadController {
 		public ResponseEntity<Optional<Pet>> newPet(@RequestBody Pet pet)
 		{
 			return ResponseEntity.ok(petService.savePet(pet));
+		}
+		
+		@CrossOrigin(origins = "http://localhost:4200/")
+		@PostMapping(value = "/petalk/savePet/{userid}")
+		public ResponseEntity savePetalkUser(@PathVariable("userid") long userid, @RequestBody Pet pet )
+		{	
+			 log.info("user details:" + pet.toString());
+			 User user = userService.getById(userid).get();
+			 user.getPetsOwnedByUsers().add(pet);
+			 return ResponseEntity.of(userService.saveUser(user)); 
 		}
 //		@CrossOrigin(origins = "http://localhost:4200/")
 //		@GetMapping("/petalk/user/getUserPetInfo/{id}")

@@ -95,23 +95,29 @@ public class User {
 		          CascadeType.MERGE
 		      }, mappedBy = "user" )
 		private Set<PurchaseAudit> purchaseAudit;
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", first_name=" + first_name + ", last_name=" + last_name + ", email=" + email
-				+ ", username=" + username + ", roles=" + roles + ", locations=" + userLocations + ", petalkDevices="
-				+ petalkDevices + ", petsOwnedByUsers=" + petsOwnedByUsers + ", purchaseAudit=" + purchaseAudit + "]";
-	}
 	
+	@ManyToMany(fetch = FetchType.LAZY,
+		      cascade = {
+		          CascadeType.PERSIST,
+		          CascadeType.MERGE
+		      })
+			@JoinTable(
+				    name="user_petalk_app_trigger",
+				    joinColumns=@JoinColumn(name="user_id"),
+				    inverseJoinColumns=@JoinColumn(name="petalk_app_trigger_id")
+				)
+			 Set <PetalkAppTrigger> petalkAppTriggers = new HashSet <PetalkAppTrigger> ();
+
+	
+
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-
+	
 	public User(long id, String first_name, String last_name, String email, String username, Set<Role> roles,
 			Set<Location> userLocations, Set<PetalkDevice> petalkDevices, Set<Pet> petsOwnedByUsers,
-			Set<PurchaseAudit> purchaseAudit) {
+			Set<PurchaseAudit> purchaseAudit, Set<PetalkAppTrigger> petalkAppTriggers) {
 		super();
 		this.id = id;
 		this.first_name = first_name;
@@ -123,6 +129,7 @@ public class User {
 		this.petalkDevices = petalkDevices;
 		this.petsOwnedByUsers = petsOwnedByUsers;
 		this.purchaseAudit = purchaseAudit;
+		this.petalkAppTriggers = petalkAppTriggers;
 	}
 
 	public long getId() {
@@ -211,6 +218,22 @@ public class User {
 
 	public void setUserLocations(Set<Location> userLocations) {
 		this.userLocations = userLocations;
+	}
+
+	public Set<PetalkAppTrigger> getPetalkAppTriggers() {
+		return petalkAppTriggers;
+	}
+
+	public void setPetalkAppTriggers(Set<PetalkAppTrigger> petalkAppTrigger) {
+		this.petalkAppTriggers = petalkAppTrigger;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", first_name=" + first_name + ", last_name=" + last_name + ", email=" + email
+				+ ", username=" + username + ", roles=" + roles + ", userLocations=" + userLocations
+				+ ", petalkDevices=" + petalkDevices + ", petsOwnedByUsers=" + petsOwnedByUsers + ", purchaseAudit="
+				+ purchaseAudit + ", petalkAppTrigger=" + petalkAppTriggers + "]";
 	}
 	
 	

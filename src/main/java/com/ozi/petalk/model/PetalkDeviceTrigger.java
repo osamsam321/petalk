@@ -39,6 +39,7 @@ public class PetalkDeviceTrigger {
     @JoinColumn(name = "location_id", referencedColumnName = "id")
 	private Location petalkTriggerLocation;
 	private String triggerType;
+	private boolean created_with_application;
 	
 	@JsonIgnore
 	@ManyToMany(fetch = FetchType.LAZY,
@@ -55,15 +56,20 @@ public class PetalkDeviceTrigger {
 	
 
 	
+
+
+
+
 	public PetalkDeviceTrigger() {
 	super();
 	// TODO Auto-generated constructor stub
 }
-
-
+	
+	
 
 	public PetalkDeviceTrigger(int id, LocalDateTime trigger_ts, String device_name, String pet_name,
-			Location petalkTriggerLocation, String triggerType, List<PetalkDevice> petalkDevices, Pet associatedPet) {
+			Location petalkTriggerLocation, String triggerType, boolean created_with_application,
+			List<PetalkDevice> petalkDevices, Pet associatedPet) {
 		super();
 		this.id = id;
 		this.trigger_ts = trigger_ts;
@@ -71,6 +77,7 @@ public class PetalkDeviceTrigger {
 		this.pet_name = pet_name;
 		this.petalkTriggerLocation = petalkTriggerLocation;
 		this.triggerType = triggerType;
+		this.created_with_application = created_with_application;
 		this.petalkDevices = petalkDevices;
 		this.associatedPet = associatedPet;
 	}
@@ -143,6 +150,18 @@ public class PetalkDeviceTrigger {
 
 	public void setPet_name(String pet_name) {
 		this.pet_name = pet_name;
+	}
+	
+
+
+	public boolean isCreated_with_application() {
+		return created_with_application;
+	}
+
+
+
+	public void setCreated_with_application(boolean created_with_application) {
+		this.created_with_application = created_with_application;
 	}
 
 
