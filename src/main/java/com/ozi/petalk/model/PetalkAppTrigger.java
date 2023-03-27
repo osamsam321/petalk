@@ -32,9 +32,9 @@ public class PetalkAppTrigger {
 	private int id;
 	private LocalDateTime trigger_ts;
 	private String pet_name;
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "location_id", referencedColumnName = "id")
-	private Location petalkTriggerLocation;
+//	@OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "location_id", referencedColumnName = "id")
+//	private Location petalkTriggerLocation;
 	private String triggerType;
 	
   
@@ -65,7 +65,7 @@ public List<User> users;
 		this.id = id;
 		this.trigger_ts = trigger_ts;
 		this.pet_name = pet_name;
-		this.petalkTriggerLocation = petalkTriggerLocation;
+//		this.petalkTriggerLocation = petalkTriggerLocation;
 		this.triggerType = triggerType;
 		this.associatedPet = associatedPet;
 		this.users = users;
@@ -89,13 +89,13 @@ public List<User> users;
 	}
 
 
-	public Location getPetalkTriggerLocation() {
-		return petalkTriggerLocation;
-	}
-
-	public void setPetalkTriggerLocation(Location petalkTriggerLocation) {
-		this.petalkTriggerLocation = petalkTriggerLocation;
-	}
+//	public Location getPetalkTriggerLocation() {
+//		return petalkTriggerLocation;
+//	}
+//
+//	public void setPetalkTriggerLocation(Location petalkTriggerLocation) {
+//		this.petalkTriggerLocation = petalkTriggerLocation;
+//	}
 	public String getTriggerType() {
 		return triggerType;
 	}
@@ -135,12 +135,7 @@ public List<User> users;
 	}
 
 
-	@Override
-	public String toString() {
-		return "PetalkAppTrigger [id=" + id + ", trigger_ts=" + trigger_ts + ", pet_name=" + pet_name
-				+ ", petalkTriggerLocation=" + petalkTriggerLocation + ", triggerType=" + triggerType
-				+ ", associatedPet=" + associatedPet + ", users=" + users + "]";
-	}
+
 	
 
 }
