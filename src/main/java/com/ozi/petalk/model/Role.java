@@ -7,6 +7,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,6 +21,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
+
 @Entity
 @Table(name="role")
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
@@ -30,7 +34,8 @@ public class Role {
 	private int id;
 	@Nonnull 
 	@JsonIgnore
-	private String role_type;
+	@Enumerated(EnumType.STRING)
+	private PETALK_ROLE role_type;
 	@ManyToMany(fetch = FetchType.LAZY,
 		      cascade = {
 		          CascadeType.PERSIST,
@@ -46,7 +51,7 @@ public class Role {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Role(int id, String role_type, List<User> users, RegistrationAudit ra) {
+	public Role(int id, PETALK_ROLE role_type, List<User> users, RegistrationAudit ra) {
 		super();
 		this.id = id;
 		this.role_type = role_type;
@@ -62,11 +67,11 @@ public class Role {
 		this.id = id;
 	}
 
-	public String getRole_type() {
+	public PETALK_ROLE getRole_type() {
 		return role_type;
 	}
 
-	public void setRole_type(String role_type) {
+	public void setRole_type(String PETALK_ROLE) {
 		this.role_type = role_type;
 	}
 

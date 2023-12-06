@@ -40,6 +40,8 @@ public class User {
 	private String email;
 	@Nonnull
 	private String username;
+	@Nonnull
+	private String password;
 	
 	@JsonIgnore
 	@ManyToMany(fetch = FetchType.LAZY,
@@ -115,8 +117,10 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public User(long id, String first_name, String last_name, String email, String username, Set<Role> roles,
-			Set<Location> userLocations, Set<PetalkDevice> petalkDevices, Set<Pet> petsOwnedByUsers,
+	
+
+	public User(long id, String first_name, String last_name, String email, String username, String password,
+			Set<Role> roles, Set<Location> userLocations, Set<PetalkDevice> petalkDevices, Set<Pet> petsOwnedByUsers,
 			Set<PurchaseAudit> purchaseAudit, Set<PetalkAppTrigger> petalkAppTriggers) {
 		super();
 		this.id = id;
@@ -124,6 +128,7 @@ public class User {
 		this.last_name = last_name;
 		this.email = email;
 		this.username = username;
+		this.password = password;
 		this.roles = roles;
 		this.userLocations = userLocations;
 		this.petalkDevices = petalkDevices;
@@ -131,6 +136,8 @@ public class User {
 		this.purchaseAudit = purchaseAudit;
 		this.petalkAppTriggers = petalkAppTriggers;
 	}
+
+
 
 	public long getId() {
 		return id;
@@ -170,6 +177,14 @@ public class User {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public Set<Role> getRoles() {
@@ -228,12 +243,14 @@ public class User {
 		this.petalkAppTriggers = petalkAppTrigger;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", first_name=" + first_name + ", last_name=" + last_name + ", email=" + email
-				+ ", username=" + username + ", roles=" + roles + ", userLocations=" + userLocations
-				+ ", petalkDevices=" + petalkDevices + ", petsOwnedByUsers=" + petsOwnedByUsers + ", purchaseAudit="
-				+ purchaseAudit + ", petalkAppTrigger=" + petalkAppTriggers + "]";
+				+ ", username=" + username + ", password=" + password + ", roles=" + roles + ", userLocations="
+				+ userLocations + ", petalkDevices=" + petalkDevices + ", petsOwnedByUsers=" + petsOwnedByUsers
+				+ ", purchaseAudit=" + purchaseAudit + ", petalkAppTriggers=" + petalkAppTriggers + "]";
 	}
 	
 	
