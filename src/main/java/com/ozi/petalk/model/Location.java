@@ -52,12 +52,6 @@ public class Location {
 	@OneToOne(mappedBy = "petalkTriggerLocation")
 	PetalkDeviceTrigger petalkDeviceTrigger;
 	
-	
-	
-	public Location() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
 	public Location(int id, String address, String address2, String home_type, String apartment_room_value,
 			int zip_code, String street, String state, String country, PetalkDeviceTrigger petalkDeviceTrigger) {

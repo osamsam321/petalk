@@ -52,13 +52,6 @@ public List<User> users;
 	
 	
 
-
-	public PetalkAppTrigger() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-
 	public PetalkAppTrigger(int id, LocalDateTime trigger_ts, String pet_name, Location petalkTriggerLocation,
 			String triggerType, Pet associatedPet, List<User> users) {
 		super();

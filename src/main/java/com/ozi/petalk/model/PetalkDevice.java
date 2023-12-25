@@ -72,11 +72,7 @@ public class PetalkDevice {
 			 Set <PetalkDeviceTrigger> petalkDeviceTriggers = new HashSet <PetalkDeviceTrigger> ();
 	
 	
-	public PetalkDevice() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
+	
 	public PetalkDevice(int id, String device_name, LocalDateTime purchased_ts, LocalDateTime first_used_ts, String sku_value,
 			String upc_value, String upc_barcode_img_path, List<User> users, List<Pet> pets,
 			Set<PetalkDeviceTrigger> petalkDeviceTriggers) {

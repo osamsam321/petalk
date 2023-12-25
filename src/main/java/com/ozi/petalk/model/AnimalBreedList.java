@@ -27,21 +27,7 @@ public class AnimalBreedList {
 	@Nonnull
 	private String generic_name;
 	
-	
-	
-	public AnimalBreedList() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
-	public AnimalBreedList(int id, String animal_breed, String scientific_name, String generic_name) {
-		super();
-		this.id = id;
-		this.animal_breed = animal_breed;
-		this.scientific_name = scientific_name;
-		this.generic_name = generic_name;
-	}
-	
 	public int getId() {
 		return id;
 	}

@@ -47,7 +47,7 @@ public class Pet {
 		private int age;
 		@Nonnull
 		private String species;
-		
+		private String img_relative_path;		
 		@ManyToMany(fetch = FetchType.LAZY,
 	      cascade = {
 	          CascadeType.PERSIST,
@@ -82,38 +82,6 @@ public class Pet {
 			      }, mappedBy="petsOwnedByUsers")
 	  public List<User> users;
 		
-
-		
-
-
-
-		public Pet() {
-			super();
-			// TODO Auto-generated constructor stub
-		}
-
-
-
-		public Pet(long id, String pet_name, float pet_weight, String weight_uom_abbr, float pet_height,
-				float pet_width, float pet_length, String lwh_uom_abbr, String color, String species,
-				Set<AnimalBreed> animalBreeds, List<User> users) {
-			super();
-			this.id = id;
-			this.pet_name = pet_name;
-			this.pet_weight = pet_weight;
-			this.weight_uom_abbr = weight_uom_abbr;
-			this.pet_height = pet_height;
-			this.pet_width = pet_width;
-			this.pet_length = pet_length;
-			this.lwh_uom_abbr = lwh_uom_abbr;
-			this.color = color;
-			this.species = species;
-			this.age = age;
-			this.animalBreeds = animalBreeds;
-			this.users = users;
-		}
-
-
 
 		public long getId() {
 			return id;

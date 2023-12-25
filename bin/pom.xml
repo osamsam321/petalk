@@ -21,6 +21,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jdbc</artifactId>
 		</dependency>
+		<!-- <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency> -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -91,9 +95,24 @@
 		    <artifactId>maven-resources-plugin</artifactId>
 		    <version>3.3.0</version>
 		</dependency>
+		
+		<dependency>
+		    <groupId>javax.validation</groupId>
+		    <artifactId>validation-api</artifactId>
+		    <version>2.0.1.Final</version>
+		</dependency>
 	</dependencies>
 
 	<build>
+		<resources>     
+	        <resource>
+	            <directory>src/main/resources</directory>
+	            <includes>                      
+	                <include>**/*.properties</include>                  
+	            </includes>
+	        </resource>            
+	    </resources>
+	    
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

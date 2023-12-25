@@ -23,16 +23,7 @@ public class AnimalSpeciesList {
 	@Nonnull
 	private String animal_species;
 	
-	
-	public AnimalSpeciesList() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public AnimalSpeciesList(int id, String animal_species) {
-		super();
-		this.id = id;
-		this.animal_species = animal_species;
-	}
+
 	public int getId() {
 		return id;
 	}

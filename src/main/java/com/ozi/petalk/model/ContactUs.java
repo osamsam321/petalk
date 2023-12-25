@@ -29,14 +29,7 @@ public class ContactUs {
 	private String message;
 	
 	
-	public ContactUs() {
-		super();
-		this.name = "";
-		this.email = "";
-		this.subject = 	"";
-		this.message = "";
-	
-	}
+
 	public ContactUs(String name, String email, String subject, String message) {
 		super();
 		this.name = name;

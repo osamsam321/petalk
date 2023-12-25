@@ -46,18 +46,6 @@ public class Role {
 	@OneToOne(mappedBy = "rolesMarkedInRegistrationAudit")
 	RegistrationAudit ra;
 	
-	public Role() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public Role(int id, PETALK_ROLE role_type, List<User> users, RegistrationAudit ra) {
-		super();
-		this.id = id;
-		this.role_type = role_type;
-		this.users = users;
-		this.ra = ra;
-	}
 
 	public int getId() {
 		return id;

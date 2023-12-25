@@ -46,21 +46,7 @@ public class AnimalBreed {
 	    public List<Pet> pets;
 		
 		
-		public AnimalBreed() {
-			super();
-			// TODO Auto-generated constructor stub
-		}
-
-		public AnimalBreed(int id, String animal_breed, LocalDateTime registration_ts, Role rolesMarkedInRegistrationAudit,
-				String role_type, List<Pet> pets) {
-			super();
-			this.id = id;
-			this.animal_breed = animal_breed;
-			this.registration_ts = registration_ts;
-			this.rolesMarkedInRegistrationAudit = rolesMarkedInRegistrationAudit;
-			this.role_type = role_type;
-			this.pets = pets;
-		}
+	
 		
 		public int getId() {
 			return id;

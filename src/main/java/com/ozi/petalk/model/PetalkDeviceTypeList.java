@@ -33,17 +33,7 @@ public class PetalkDeviceTypeList {
 	@Nonnull
 	private float cost;
 	
-	public PetalkDeviceTypeList() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public PetalkDeviceTypeList(int id, String name, LocalDateTime manufactured_ts, float cost) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.manufactured_ts = manufactured_ts;
-		this.cost = cost;
-	}
+
 	public int getId() {
 		return id;
 	}

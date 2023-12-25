@@ -37,15 +37,7 @@ public class RegistrationAudit {
     @JoinColumn(name = "role_id", referencedColumnName = "id")
     private Role rolesMarkedInRegistrationAudit;
 	
-	public RegistrationAudit(int id, int user_id, LocalDateTime registration_ts, String computer_device_type,
-			Role rolesMarkedInRegistrationAudit) {
-		super();
-		this.id = id;
-		this.user_id = user_id;
-		this.registration_ts = registration_ts;
-		this.computer_device_type = computer_device_type;
-		this.rolesMarkedInRegistrationAudit = rolesMarkedInRegistrationAudit;
-	}
+
 
 	public int getId() {
 		return id;

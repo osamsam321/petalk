@@ -35,19 +35,7 @@ public class PurchaseAudit {
     @JoinColumn(name="user_id", nullable=false)
 	private User user;
 	
-	
-	public PurchaseAudit() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
-	public PurchaseAudit(int id, LocalDateTime purchase_ts, float cost, User user) {
-		super();
-		this.id = id;
-		this.purchase_ts = purchase_ts;
-		this.cost = cost;
-		this.user = user;
-	}
 
 	public int getId() {
 		return id;

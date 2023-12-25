@@ -60,28 +60,6 @@ public class PetalkDeviceTrigger {
 
 
 
-	public PetalkDeviceTrigger() {
-	super();
-	// TODO Auto-generated constructor stub
-}
-	
-	
-
-	public PetalkDeviceTrigger(int id, LocalDateTime trigger_ts, String device_name, String pet_name,
-			Location petalkTriggerLocation, String triggerType, boolean created_with_application,
-			List<PetalkDevice> petalkDevices, Pet associatedPet) {
-		super();
-		this.id = id;
-		this.trigger_ts = trigger_ts;
-		this.device_name = device_name;
-		this.pet_name = pet_name;
-		this.petalkTriggerLocation = petalkTriggerLocation;
-		this.triggerType = triggerType;
-		this.created_with_application = created_with_application;
-		this.petalkDevices = petalkDevices;
-		this.associatedPet = associatedPet;
-	}
-
 
 
 	public int getId() {

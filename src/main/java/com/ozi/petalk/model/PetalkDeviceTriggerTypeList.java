@@ -24,15 +24,7 @@ public class PetalkDeviceTriggerTypeList {
 	@Nonnull
 	private String trigger_name;
 	
-	public PetalkDeviceTriggerTypeList() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public PetalkDeviceTriggerTypeList(int id, String trigger_name) {
-		super();
-		this.id = id;
-		this.trigger_name = trigger_name;
-	}
+
 	public int getId() {
 		return id;
 	}

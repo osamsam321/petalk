@@ -24,16 +24,7 @@ public class PetalkDeviceColorList {
 	@Nonnull
 	private String color;
 	
-	
-	public PetalkDeviceColorList() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public PetalkDeviceColorList(int id, String color) {
-		super();
-		this.id = id;
-		this.color = color;
-	}
+
 	public int getId() {
 		return id;
 	}
