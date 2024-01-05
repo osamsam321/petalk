@@ -138,12 +138,17 @@ public class HeadController {
 			 user.getPetsOwnedByUsers().add(pet);
 			 return ResponseEntity.of(userService.saveUser(user)); 
 		}
-//		@CrossOrigin(origins = "http://localhost:4200/")
-//		@GetMapping("/petalk/user/getUserPetInfo/{id}")
-//		public ResponseEntity<Set<Pet>> getUserPetInfo(@PathVariable("id") Long id)
-//		{
-//			return ResponseEntity.ok(userService.getById(id).get().getPetsOwnedByUsers());
-//		}
+
+		@CrossOrigin(origins = "http://localhost:4200/")
+		@PostMapping(value = "/petalk/saveAppTrigger/{userid}")
+		public ResponseEntity saveAppTrigger(@PathVariable("userid") long userid, @RequestBody Pet pet )
+		{	
+			 log.info("user details:" + pet.toString());
+			 User user = userService.getById(userid).get();
+			 user.getPetsOwnedByUsers().add(pet);
+			 return ResponseEntity.of(userService.saveUser(user)); 
+		}
+
 
 
 	

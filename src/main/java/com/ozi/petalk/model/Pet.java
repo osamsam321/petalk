@@ -19,6 +19,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -47,7 +48,9 @@ public class Pet {
 		private int age;
 		@Nonnull
 		private String species;
-		private String img_relative_path;		
+		private String img_relative_path;
+		private String img_absolute_path;
+		private String img_file_name;		
 		@ManyToMany(fetch = FetchType.LAZY,
 	      cascade = {
 	          CascadeType.PERSIST,
@@ -81,6 +84,13 @@ public class Pet {
 			          CascadeType.MERGE
 			      }, mappedBy="petsOwnedByUsers")
 	  public List<User> users;
+
+	  @OneToMany(fetch = FetchType.LAZY,
+		      cascade = {
+		          CascadeType.PERSIST,
+		          CascadeType.MERGE,
+			   } )
+		private Set<PetalkAppTrigger> petalkAppTrigger;
 		
 
 		public long getId() {

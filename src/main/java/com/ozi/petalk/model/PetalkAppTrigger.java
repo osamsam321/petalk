@@ -14,6 +14,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -38,7 +39,7 @@ public class PetalkAppTrigger {
 	private String triggerType;
 	
   
-  @OneToOne(cascade = CascadeType.ALL)
+  @ManyToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "pet_id",referencedColumnName = "id" )
   private Pet associatedPet;
   	
